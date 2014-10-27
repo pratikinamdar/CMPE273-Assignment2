@@ -47,21 +47,21 @@ public class UserController extends WebMvcConfigurerAdapter {
 
 	
 	public static DBCollection getCollection(String collectionName) throws UnknownHostException, MongoException {
-		String uri = "mongodb://ds047050.mongolab.com:47050/";
-		MongoCredential mongoCredential = MongoCredential.createMongoCRCredential("pratikinamdar", "cmpe273", "Gr0undnut@123".toCharArray());
+		String uri = "mongodb://ds049170.mongolab.com:49170/";
+		MongoCredential mongoCredential = MongoCredential.createMongoCRCredential("pratikinamdar", "cmpe273_pratik", "Gr0undnut@123".toCharArray());
 		MongoClientURI mongoClientURI = new MongoClientURI(uri);
 
 		MongoClient mongoClient = new MongoClient(mongoClientURI);
 
-		DB db = mongoClient.getDB("cmpe273");
-		db.authenticate("pratikinamdar", "Gr0undnut123".toCharArray());
+		DB db = mongoClient.getDB("cmpe273_pratik");
+		db.authenticate("pratikinamdar", "Gr0undnut@123".toCharArray());
 
 		DBCollection dbobj = db.getCollection(collectionName);
 		return dbobj;
 	}
 
 	
-	@RequestMapping(value = "API/V1/users", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/API/V1/Users", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<UserInfo> createUser(@RequestBody @Valid UserInfo user, BindingResult bindingResult) throws UnknownHostException, MongoException {
 		ResponseEntity<UserInfo> respEntity = null;
 		DBCollection collection = UserController.getCollection("users");

@@ -26,9 +26,11 @@ import com.mongodb.MongoCredential;
 import java.net.UnknownHostException;
 import com.mongodb.ParallelScanOptions;
 
+@Configuration
 @ComponentScan
 @EnableAutoConfiguration
-
+@EnableMongoRepositories
+@Import(RespositoryRestMvcConfiguration.class)
 public class Application
  {
 
